@@ -138,7 +138,7 @@ mkdir -p /run/root-rw || echo Fail create rw dir
 [ $? != 0 ] || return
 
 # Mount and/or format the ephemeral device 
-mount $overlayrootdevice /run/root-rw || ((mkfs.xfs -f $overlayrootdevice && mount $overlayrootdevice /run/root-rw) || (echo Fail mount $overlayrootdevice. Falling back to root device. && return 1))
+(mkfs.xfs -f $overlayrootdevice && mount $overlayrootdevice /run/root-rw) || (echo Fail mount $overlayrootdevice. Falling back to root device. && return 1)
 [ $? = 0 ] || return
 
 # Create working directories to the RW filesystem
